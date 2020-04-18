@@ -16,13 +16,16 @@ class CoinFlipper extends Component {
         this.state = {
             currentStatus: options[0],
             gelenler: [],
-            donuyor: false
+            donuyor: false,
+            yaziToplam: 0,
+            turaToplam: 0,
+            toplamAtis: 0,
         }
     }
 
     atisYap = () => {
         this.setState({
-            donuyor: true
+            donuyor: true,
         });
         const rastgeleEleman = getRandomElFromArr(options);
         setTimeout(() => {
@@ -32,10 +35,30 @@ class CoinFlipper extends Component {
                 donuyor: false
             })
         }, 1000);
+        setTimeout(() => {
+            this.setState({
+                yaziToplam: 0,
+                turaToplam: 0
+            })
+            for(let i = 0; i < this.state.gelenler.length; i++){ 
+
+                if(this.state.gelenler[i] === "yazi"){
+                    this.setState({
+                        yaziToplam: this.state.yaziToplam + 1
+                    })
+                }else if(this.state.gelenler[i] === "tura"){
+                    this.setState({
+                        turaToplam: this.state.turaToplam + 1
+                    })
+                }
+
+            }
+        }, 1000);
+           
     }
 
     render() {
-        const {currentStatus, donuyor, gelenler} = this.state;
+        const {currentStatus, donuyor, gelenler, yaziToplam, turaToplam} = this.state;
         return (
             <div>
                 <h1>
@@ -46,6 +69,11 @@ class CoinFlipper extends Component {
                 {
                     gelenler.length > 0 && !donuyor && <h3>{currentStatus} geldi</h3>
                 }
+
+                <h3>Toplam {gelenler.length} kere atıldı.</h3>
+                <h3>{yaziToplam} tane yazı geldi.</h3>
+                <h3>{turaToplam} tane tura geldi.</h3>
+
             </div>
         );
     }
