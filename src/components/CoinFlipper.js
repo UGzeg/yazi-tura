@@ -17,9 +17,8 @@ class CoinFlipper extends Component {
             currentStatus: options[0],
             gelenler: [],
             donuyor: false,
-            yaziToplam: 0,
-            turaToplam: 0,
-            toplamAtis: 0,
+            //yaziToplam: 0,
+            //turaToplam: 0,
         }
     }
 
@@ -35,7 +34,7 @@ class CoinFlipper extends Component {
                 donuyor: false
             })
         }, 1000);
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.setState({
                 yaziToplam: 0,
                 turaToplam: 0
@@ -53,12 +52,14 @@ class CoinFlipper extends Component {
                 }
 
             }
-        }, 1000);
+        }, 1000);*/
            
     }
 
     render() {
-        const {currentStatus, donuyor, gelenler, yaziToplam, turaToplam} = this.state;
+        const {currentStatus, donuyor, gelenler} = this.state;
+        const yaziToplam = gelenler.filter(yazi => yazi === "yazi");
+        const turaToplam = gelenler.filter(tura => tura === "tura");
         return (
             <div>
                 <h1>
@@ -71,8 +72,8 @@ class CoinFlipper extends Component {
                 }
 
                 <h3>Toplam {gelenler.length} kere atıldı.</h3>
-                <h3>{yaziToplam} tane yazı geldi.</h3>
-                <h3>{turaToplam} tane tura geldi.</h3>
+                <h3>{yaziToplam.length} tane yazı geldi.</h3>
+                <h3>{turaToplam.length} tane tura geldi.</h3>
 
             </div>
         );
