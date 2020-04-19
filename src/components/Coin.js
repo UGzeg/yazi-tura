@@ -7,14 +7,14 @@ const Coin = (props) => {
     const {currentStatus, donuyor} = props;
     return (
         <div className="Coin-container">
-            <div className={`Coin ${props.donuyor && "Coin-rotate"}`}>
+            <div className={`Coin ${donuyor && "Coin-rotate"}`}>
                 <img src={CoinTura}
                      className={
-                         props.currentStatus === "yazi" ? "Coin-back": "Coin-front"
+                        currentStatus === "yazi" ? "Coin-back": "Coin-front"
                      } alt =""
                 />
                 <img src={CoinYazi} className={
-                        props.currentStatus === "yazi" ? "Coin-front": "Coin-back"
+                        currentStatus === "yazi" ? "Coin-front": "Coin-back"
                     } alt ="" 
                 />
             </div>
