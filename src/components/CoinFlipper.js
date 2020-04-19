@@ -17,8 +17,6 @@ class CoinFlipper extends Component {
             currentStatus: options[0],
             gelenler: [],
             donuyor: false,
-            //yaziToplam: 0,
-            //turaToplam: 0,
         }
     }
 
