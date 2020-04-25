@@ -56,8 +56,8 @@ class CoinFlipper extends Component {
 
     render() {
         const {currentStatus, donuyor, gelenler} = this.state;
-        const yaziToplam = gelenler.filter(yazi => yazi === "yazi");
-        const turaToplam = gelenler.filter(tura => tura === "tura");
+        //const yaziToplam = gelenler.filter(yazi => yazi === "yazi");
+        //const turaToplam = gelenler.filter(tura => tura === "tura");
         return (
             <div>
                 <h1>
@@ -70,8 +70,14 @@ class CoinFlipper extends Component {
                 }
 
                 <h3>Toplam {gelenler.length} kere atıldı.</h3>
-                <h3>{yaziToplam.length} tane yazı geldi.</h3>
-                <h3>{turaToplam.length} tane tura geldi.</h3>
+                {/*<h3>{yaziToplam.length} tane yazı geldi.</h3>
+                <h3>{turaToplam.length} tane tura geldi.</h3>*/}
+                {
+                    options.map((option) => {
+                        const sayi = gelenler.filter((item) => item === option);
+                        return <h3>{sayi.length} tane {option} geldi.</h3>
+                    })
+                }
 
             </div>
         );
